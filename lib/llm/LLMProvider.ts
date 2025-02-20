@@ -8,6 +8,7 @@ import { LLMCache } from "../cache/LLMCache";
 import { AnthropicClient } from "./AnthropicClient";
 import { LLMClient } from "./LLMClient";
 import { OpenAIClient } from "./OpenAIClient";
+import { OpenRouterClient } from "../../examples/external_clients/openrouter";
 
 const modelToProviderMap: { [key in AvailableModel]: ModelProvider } = {
   "gpt-4o": "openai",
@@ -21,6 +22,7 @@ const modelToProviderMap: { [key in AvailableModel]: ModelProvider } = {
   "claude-3-5-sonnet-latest": "anthropic",
   "claude-3-5-sonnet-20240620": "anthropic",
   "claude-3-5-sonnet-20241022": "anthropic",
+  "google/gemini-2.0-pro-exp-02-05:free": "openrouter",
 };
 
 export class LLMProvider {
@@ -73,6 +75,17 @@ export class LLMProvider {
         });
       case "anthropic":
         return new AnthropicClient({
+          logger: this.logger,
+          enableCaching: this.enableCaching,
+          cache: this.cache,
+          modelName,
+          clientOptions,
+        });
+      case "openrouter":
+        if (modelName !== "google/gemini-2.0-pro-exp-02-05:free") {
+          throw new Error(`Unsupported OpenRouter model: ${modelName}`);
+        }
+        return new OpenRouterClient({
           logger: this.logger,
           enableCaching: this.enableCaching,
           cache: this.cache,

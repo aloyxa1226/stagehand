@@ -14,11 +14,12 @@ export const AvailableModelSchema = z.enum([
   "o1-mini",
   "o1-preview",
   "o3-mini",
+  "google/gemini-2.0-pro-exp-02-05:free",
 ]);
 
 export type AvailableModel = z.infer<typeof AvailableModelSchema>;
 
-export type ModelProvider = "openai" | "anthropic";
+export type ModelProvider = "openai" | "anthropic" | "openrouter";
 
 export type ClientOptions = OpenAIClientOptions | AnthropicClientOptions;
 
