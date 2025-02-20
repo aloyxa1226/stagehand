@@ -12,6 +12,7 @@
     "langchain": "npm run build-dom-scripts && tsx examples/langchain.ts",
     "debug-url": "npm run build-dom-scripts && tsx examples/debugUrl.ts",
     "external-client": "npm run build-dom-scripts && tsx examples/external_client.ts",
+    "openrouter-client": "npm run build-dom-scripts && tsx examples/example_openrouter.ts",
     "instructions": "npm run build-dom-scripts && tsx examples/instructions.ts",
     "ai-sdk-client": "npm run build-dom-scripts && tsx examples/ai_sdk_example.ts",
     "actionable_observe_example": "npm run build-dom-scripts && tsx examples/actionable_observe_example.ts",
@@ -59,7 +60,6 @@
     "chalk": "^5.4.1",
     "cheerio": "^1.0.0",
     "chromium-bidi": "^0.10.0",
-    "esbuild": "^0.21.4",
     "eslint": "^9.16.0",
     "express": "^4.21.0",
     "globals": "^15.13.0",
@@ -81,6 +81,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.27.3",
     "@browserbasehq/sdk": "^2.0.0",
+    "esbuild": "^0.25.0",
     "ws": "^8.18.0",
     "zod-to-json-schema": "^3.23.5"
   },
